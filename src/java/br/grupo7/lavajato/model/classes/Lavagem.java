@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.grupo7.lavajato.model;
+package br.grupo7.lavajato.model.classes;
 
 import java.util.Date;
 import javax.persistence.CascadeType;

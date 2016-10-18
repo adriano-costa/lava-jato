@@ -5,8 +5,8 @@
  */
 package teste1;
 
-import br.grupo7.lavajato.dao.ManagerDao;
-import br.grupo7.lavajato.model.Cliente;
+import br.grupo7.lavajato.model.dao.ManagerDao;
+import br.grupo7.lavajato.model.classes.Cliente;
 
 /**
  *
