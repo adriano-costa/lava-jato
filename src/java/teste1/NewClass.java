@@ -7,6 +7,7 @@ package teste1;
 
 import br.grupo7.lavajato.model.dao.ManagerDao;
 import br.grupo7.lavajato.model.classes.Cliente;
+import br.grupo7.lavajato.model.classes.TipoLavagem;
 
 /**
  *
@@ -15,10 +16,17 @@ import br.grupo7.lavajato.model.classes.Cliente;
 public class NewClass {
     
     public static void main(String[] args){
-        Cliente c = new Cliente();
-        c.setNome("dasdasdasds");
-        c = (Cliente)ManagerDao.getCurrentInstance().update(c);
-        System.out.println(c.getId());
+        TipoLavagem t = new TipoLavagem();
+        t.setNome("Completa");
+        t.setDescricao("Lava tudo");
+        t.setValor(100.00);
+        
+        ManagerDao.getCurrentInstance().update(t);
+        
+//        Cliente c = new Cliente();
+//        c.setNome("dasdasdasds");
+//        c = (Cliente)ManagerDao.getCurrentInstance().update(c);
+//        System.out.println(c.getId());
     }
     
 }

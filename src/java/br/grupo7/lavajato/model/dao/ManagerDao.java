@@ -75,4 +75,15 @@ public class ManagerDao {
         em.close();
     }
     
+    public List listar(String query){
+        
+        EntityManager em = emf.createEntityManager();
+        
+        List returnedList = em.createQuery(query).getResultList();
+        
+        em.close();
+        
+        return returnedList;
+    }
+    
 }
