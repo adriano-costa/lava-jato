@@ -12,32 +12,42 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="jquery-3.1.1.js"></script>
+        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" >
         <title>Cadastrar tipo lavagem</title>
     </head>
     <body>
-        <% if (request.getParameter("ident") == null) {%>
+        <div style="position: relative; left:30px; width: 40%">
+            <% if (request.getParameter("ident") == null) {%>
             <h1>Cadastrar novo tipo de lavagem</h1>
             <br/>
-            <form id="cadastro_tipo_lavagem" action="TipoLavagemServlet"/>
+            <form id="cadastro_tipo_lavagem" class="navbar-form navbar-left" action="TipoLavagemServlet"/>
                 Nome: <br/><input type="text" name="nome" /><br/><br/>
                 Descrição: <br/> <textarea name="descricao" rows="10" cols="50"></textarea> <br/><br/>
                 Valor R$: <br/><input type="number" step="any" min="0" name="valor"/><br/><br/>
-                <input type="submit" name="opcao" value="Cadastrar"/>
+                <input type="submit" name="opcao" value="Cadastrar" class="btn btn-primary btn-lg"/>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="Listar_tipo_lavagem.jsp" class="btn btn-lg btn-warning">Voltar</a>
             </form>
-        <%} else {
-            int ident = Integer.parseInt(request.getParameter("ident"));
-            TipoLavagem tLavagem = TipoLavagemController.getTipoLavagem(ident);
-        %>
-            <h1>Editar tipo de lavagem</h1>
-            <br/>
-            <form id="cadastro_tipo_lavagem" action="TipoLavagemServlet"/>
-                <input type="hidden" name="ident" value="<%=ident%>"/>
-                <input type="hidden" name="ObjTLavagem" value=${tLavagem} />
-                Nome: <br/><input type="text" name="nome" value="<%=tLavagem.getNome()%>"/><br/><br/>
-                Descrição: <br/> <textarea name="descricao" rows="10" cols="50"><%=tLavagem.getDescricao()%></textarea> <br/><br/>
-                Valor R$: <br/><input type="number" step="any" min="0" name="valor" value="<%=tLavagem.getValor()%>"/><br/><br/>
-                <input type="submit" name="opcao" value="Salvar"/>&nbsp;&nbsp;<input name="opcao" type="submit" value="Remover"/>
-            </form>
-            <%}%>
-    </body>
+            <%} else {
+                int ident = Integer.parseInt(request.getParameter("ident"));
+                TipoLavagem tLavagem = TipoLavagemController.getTipoLavagem(ident);
+            %>
+                <h1>Editar tipo de lavagem</h1>
+                <br/>
+                <form id="cadastro_tipo_lavagem" action="TipoLavagemServlet"/>
+                    <input type="hidden" name="ident" value="<%=ident%>"/>
+                    <input type="hidden" name="ObjTLavagem" value=${tLavagem} />
+                    Nome: <br/><input type="text" name="nome" value="<%=tLavagem.getNome()%>"/><br/><br/>
+                    Descrição: <br/> <textarea name="descricao" rows="10" cols="50"><%=tLavagem.getDescricao()%></textarea> <br/><br/>
+                    Valor R$: <br/><input type="number" step="any" min="0" name="valor" value="<%=tLavagem.getValor()%>"/><br/><br/>
+                    <input type="submit" name="opcao" value="Salvar" class="btn btn-primary btn-lg" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input name="opcao" type="submit" value="Remover" class="btn  btn-lg btn-danger"/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="Listar_tipo_lavagem.jsp" class="btn btn-lg btn-warning">Voltar</a>
+                </form>
+        <%}%>
+        </div>
+</body>
 </html>
