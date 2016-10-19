@@ -40,8 +40,8 @@
                     <%}%>
                 </table>
                 <br/><br/>
-                <a href="cadastrar_tipo_lavagem.jsp" class="btn btn-primary btn-lg"  >Cadastrar novo tipo de lavagem</a>
             <%}%>
+            <a href="cadastrar_tipo_lavagem.jsp" class="btn btn-primary btn-lg"  >Cadastrar novo tipo de lavagem</a>
         </div>
     </body>
 </html>
