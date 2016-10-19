@@ -12,8 +12,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="jquery-3.1.1.js"></script>
-        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" >
+        <script src="recursos/jquery-3.1.1.js"></script>
+        <link rel="stylesheet" href="recursos/bootstrap-3.3.7-dist/css/bootstrap.min.css" >
         <title>Tipos de lavagem</title>
     </head>
     <body>

@@ -12,8 +12,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="jquery-3.1.1.js"></script>
-        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" >
+        <script src="recursos/jquery-3.1.1.js"></script>
+        <link rel="stylesheet" href="recursos/bootstrap-3.3.7-dist/css/bootstrap.min.css" >
         <title>Cadastrar tipo lavagem</title>
     </head>
     <body>
@@ -22,9 +22,9 @@
             <h1>Cadastrar novo tipo de lavagem</h1>
             <br/>
             <form id="cadastro_tipo_lavagem" class="navbar-form navbar-left" action="TipoLavagemServlet"/>
-                Nome: <br/><input type="text" name="nome" /><br/><br/>
-                Descrição: <br/> <textarea name="descricao" rows="10" cols="50"></textarea> <br/><br/>
-                Valor R$: <br/><input type="number" step="any" min="0" name="valor"/><br/><br/>
+                Nome: <br/><input type="text" name="nome" required/><br/><br/>
+                Descrição: <br/> <textarea name="descricao" rows="10" cols="50" required></textarea> <br/><br/>
+                Valor R$: <br/><input type="number" step="any" min="0" name="valor" required/><br/><br/>
                 <input type="submit" name="opcao" value="Cadastrar" class="btn btn-primary btn-lg"/>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="Listar_tipo_lavagem.jsp" class="btn btn-lg btn-warning">Voltar</a>
@@ -37,10 +37,9 @@
                 <br/>
                 <form id="cadastro_tipo_lavagem" action="TipoLavagemServlet"/>
                     <input type="hidden" name="ident" value="<%=ident%>"/>
-                    <input type="hidden" name="ObjTLavagem" value=${tLavagem} />
-                    Nome: <br/><input type="text" name="nome" value="<%=tLavagem.getNome()%>"/><br/><br/>
-                    Descrição: <br/> <textarea name="descricao" rows="10" cols="50"><%=tLavagem.getDescricao()%></textarea> <br/><br/>
-                    Valor R$: <br/><input type="number" step="any" min="0" name="valor" value="<%=tLavagem.getValor()%>"/><br/><br/>
+                    Nome: <br/><input type="text" name="nome" value="<%=tLavagem.getNome()%>" required/><br/><br/>
+                    Descrição: <br/> <textarea name="descricao" rows="10" cols="50" required><%=tLavagem.getDescricao()%></textarea> <br/><br/>
+                    Valor R$: <br/><input type="number" step="any" min="0" name="valor" value="<%=tLavagem.getValor()%>" required/><br/><br/>
                     <input type="submit" name="opcao" value="Salvar" class="btn btn-primary btn-lg" />
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <input name="opcao" type="submit" value="Remover" class="btn  btn-lg btn-danger"/>

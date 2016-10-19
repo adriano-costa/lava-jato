@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.grupo7.lavajato.view;
+package br.grupo7.lavajato.servlets;
 
 import br.grupo7.lavajato.controller.TipoLavagemController;
 import br.grupo7.lavajato.model.classes.TipoLavagem;
