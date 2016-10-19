@@ -41,14 +41,20 @@ public class TipoLavagemServlet extends HttpServlet {
             novoTipo.setValor(Double.parseDouble(request.getParameter("valor")));
             
             String opcao = request.getParameter("opcao");
+   
             switch (opcao){
                 case "Cadastrar":
-                    TipoLavagemController.atualizar(novoTipo);
+                    TipoLavagemController.salvar(novoTipo);
+                    break;
                 case "Salvar":
-                    novoTipo.setId(Integer.parseInt(request.getParameter("id")));
+                    novoTipo.setId(Integer.parseInt(request.getParameter("ident")));
                     TipoLavagemController.atualizar(novoTipo);
+                    break;
                 case "Remover":
+                    novoTipo.setId(Integer.parseInt(request.getParameter("ident")));
+                    novoTipo = TipoLavagemController.atualizar(novoTipo);
                     TipoLavagemController.remover(novoTipo);
+                    break;
             }
             response.sendRedirect("Listar_tipo_lavagem.jsp");
         }

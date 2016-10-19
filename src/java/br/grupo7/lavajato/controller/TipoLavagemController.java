@@ -16,7 +16,7 @@ import java.util.List;
 public class TipoLavagemController {
     
     public static List getListaTiposLavagem(){
-        return ManagerDao.getCurrentInstance().listar("Select t from TipoLavagem t");
+        return ManagerDao.getCurrentInstance().listAll("Select t from TipoLavagem t");
     }
     
     public static TipoLavagem getTipoLavagem(int id){
@@ -27,8 +27,8 @@ public class TipoLavagemController {
         ManagerDao.getCurrentInstance().insert(tLavagem);
     }
     
-    public static void atualizar(TipoLavagem tLavagem){
-        ManagerDao.getCurrentInstance().update(tLavagem);
+    public static TipoLavagem atualizar(TipoLavagem tLavagem){
+        return (TipoLavagem) ManagerDao.getCurrentInstance().update(tLavagem);
     }
     
     public static void remover(TipoLavagem tLavagem){

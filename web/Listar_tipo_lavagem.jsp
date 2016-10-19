@@ -24,11 +24,11 @@
                 <h3>Não há tipos de lavagens cadastrados</h3>
         <%} else {
         %>
-            <table border="1">
+            <table border="3">
                 <tr><th>Nome</th><th>Descrição</th><th>Valor</th><th>Editar</th></tr>
                 <%for (TipoLavagem t: lista){%> 
                     <form action="cadastrar_tipo_lavagem.jsp" > 
-                        <input type='hidden' name = 'id' value= <%=t.getId()%> />
+                        <input type='hidden' name = 'ident' value= <%=t.getId()%> />
                         <tr><td><%=t.getNome()%></td>
                             <td><%=t.getDescricao()%></td>
                             <td><%=t.getValor()%></td>
@@ -36,6 +36,8 @@
                     </form>
                 <%}%>
             </table>
+            <br/><br/>
+            <a href="cadastrar_tipo_lavagem.jsp">Cadastrar novo tipo de lavagem</a>
         <%}%>
     </body>
 </html>

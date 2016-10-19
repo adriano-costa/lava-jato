@@ -68,14 +68,16 @@ public class ManagerDao {
     
     public void delete(Object o){
         EntityManager em = emf.createEntityManager();
-        
+        Object temp;
         em.getTransaction().begin();
-        em.remove(o);
+        temp = em.merge(o);
+        em.remove(temp);
         em.getTransaction().commit();
+        
         em.close();
     }
     
-    public List listar(String query){
+    public List listAll(String query){
         
         EntityManager em = emf.createEntityManager();
         
@@ -85,5 +87,7 @@ public class ManagerDao {
         
         return returnedList;
     }
+    
+    
     
 }

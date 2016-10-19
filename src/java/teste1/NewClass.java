@@ -5,9 +5,11 @@
  */
 package teste1;
 
+import br.grupo7.lavajato.controller.TipoLavagemController;
 import br.grupo7.lavajato.model.dao.ManagerDao;
 import br.grupo7.lavajato.model.classes.Cliente;
 import br.grupo7.lavajato.model.classes.TipoLavagem;
+import java.util.List;
 
 /**
  *
@@ -21,8 +23,10 @@ public class NewClass {
         t.setDescricao("Lava tudo");
         t.setValor(100.00);
         
-        ManagerDao.getCurrentInstance().update(t);
+        ManagerDao.getCurrentInstance().insert(t);
         
+        List<TipoLavagem> l = TipoLavagemController.getListaTiposLavagem();
+        System.out.println(l.get(0).getNome());
 //        Cliente c = new Cliente();
 //        c.setNome("dasdasdasds");
 //        c = (Cliente)ManagerDao.getCurrentInstance().update(c);
