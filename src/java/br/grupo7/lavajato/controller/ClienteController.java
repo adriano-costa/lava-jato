@@ -29,8 +29,8 @@ public class ClienteController {
         ManagerDao.getCurrentInstance().insert(c);
     }
     
-    public static void atualizar(Cliente c){
-        ManagerDao.getCurrentInstance().update(c);
+    public static Cliente atualizar(Cliente c){
+        return (Cliente)ManagerDao.getCurrentInstance().update(c);
     }
     
     public static void remover(Cliente c){

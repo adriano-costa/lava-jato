@@ -30,7 +30,7 @@
                 <table class="table">
                     <tr><th>Nome</th><th>Telefone</th><th>Login</th><th>Editar</th></tr>
                     <%for (Cliente c: lista){%> 
-                        <form action="cadastrar_cliente.jsp" > 
+                        <form action="Cadastrar_cliente.jsp" > 
                             <input type='hidden' name = 'ident' value= <%=c.getId()%> />
                             <tr><td><%=c.getNome()%></td>
                                 <td><%=c.getTelefone()%></td>
@@ -41,7 +41,7 @@
                 </table>
                 <br/><br/>
             <%}%>
-            <a href="cadastrar_cliente.jsp" class="btn btn-primary btn-lg"  >Cadastrar novo Cliente</a>
+            <a href="Cadastrar_cliente.jsp" class="btn btn-primary btn-lg"  >Cadastrar novo Cliente</a>
         </div>
     </body>
 </html>

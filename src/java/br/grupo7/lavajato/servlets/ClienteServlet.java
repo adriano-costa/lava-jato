@@ -7,6 +7,7 @@ package br.grupo7.lavajato.servlets;
 
 import br.grupo7.lavajato.controller.ClienteController;
 import br.grupo7.lavajato.model.classes.Cliente;
+import br.grupo7.lavajato.model.classes.Veiculo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -33,28 +34,60 @@ public class ClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            Cliente c = new Cliente();
-            c.setNome(request.getParameter("nome"));
-            c.setTelefone(request.getParameter("telefone"));
-            c.setLogin(request.getParameter("login"));
-            c.setSenha(request.getParameter("senha"));
+            Cliente c = null;
+            if(request.getAttribute("cliente")== null){
+                if(request.getParameter("ident")!= null){
+                    c = (Cliente)ClienteController.getById(Integer.parseInt(request.getParameter("ident")));
+                } else {
+                    c = new Cliente();
+                    c.setNome(request.getParameter("nome"));
+                    c.setTelefone(request.getParameter("telefone"));
+                    c.setLogin(request.getParameter("login"));
+                    c.setSenha(request.getParameter("senha"));
+                }
+            }else{
+                c = (Cliente)request.getAttribute("cliente");
+            }
             
             String opcao = request.getParameter("opcao");
    
             switch (opcao){
                 case "Cadastrar":
                     ClienteController.salvar(c);
+                    response.sendRedirect("Listar_cliente.jsp");
                     break;
                 case "Salvar":
                     c.setId(Integer.parseInt(request.getParameter("ident")));
                     ClienteController.atualizar(c);
+                    response.sendRedirect("Listar_cliente.jsp");
                     break;
                 case "Remover":
                     c.setId(Integer.parseInt(request.getParameter("ident")));
                     ClienteController.remover(c);
+                    response.sendRedirect("Listar_cliente.jsp");
+                    break;
+                case "Veiculos do Cliente":
+                    request.setAttribute("cliente", c);
+                    getServletContext().getRequestDispatcher("/Listar_veiculos_cliente.jsp").forward(request,response); 
+                    break;
+                case "Incluir veiculo":
+                    Veiculo v = new Veiculo();
+                    v.setTipo(request.getParameter("tipo"));
+                    v.setMarca(request.getParameter("marca"));
+                    v.setModelo(request.getParameter("modelo"));
+                    v.setPlaca(request.getParameter("placa"));
+                    v.setCorPredomenante(request.getParameter("cor"));
+                    c.getVeiculos().add(v);
+                    c = ClienteController.atualizar(c);
+                    response.sendRedirect("Cadastrar_cliente.jsp?ident="+c.getId());
+                    break;
+                case "Remover Veiculo":
+                    int indVeic = Integer.parseInt(request.getParameter("ind_veiculo"));
+                    c.getVeiculos().remove(indVeic);
+                    c = ClienteController.atualizar(c);
+                    response.sendRedirect("Cadastrar_cliente.jsp?ident="+c.getId());
                     break;
             }
-            response.sendRedirect("Listar_cliente.jsp");
         }
     }
 

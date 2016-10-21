@@ -30,7 +30,7 @@
                 <table class="table">
                     <tr><th>Nome</th><th>Descrição</th><th>Valor</th><th>Editar</th></tr>
                     <%for (TipoLavagem t: lista){%> 
-                        <form action="cadastrar_tipo_lavagem.jsp" > 
+                        <form action="Cadastrar_tipo_lavagem.jsp" > 
                             <input type='hidden' name = 'ident' value= <%=t.getId()%> />
                             <tr><td><%=t.getNome()%></td>
                                 <td><%=t.getDescricao()%></td>
@@ -41,7 +41,7 @@
                 </table>
                 <br/><br/>
             <%}%>
-            <a href="cadastrar_tipo_lavagem.jsp" class="btn btn-primary btn-lg"  >Cadastrar novo tipo de lavagem</a>
+            <a href="Cadastrar_tipo_lavagem.jsp" class="btn btn-primary btn-lg"  >Cadastrar novo tipo de lavagem</a>
         </div>
     </body>
 </html>
