@@ -7,7 +7,7 @@
 <%@page import="br.grupo7.lavajato.controller.TipoLavagemController"%>
 <%@page import="br.grupo7.lavajato.model.classes.TipoLavagem"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%--jsp:useBean id="tLavagem" class="br.grupo7.lavajato.model.classes.TipoLavagem" scope="page"/>--%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,7 +31,7 @@
             </form>
             <%} else {
                 int ident = Integer.parseInt(request.getParameter("ident"));
-                TipoLavagem tLavagem = TipoLavagemController.getTipoLavagem(ident);
+                TipoLavagem tLavagem = TipoLavagemController.getById(ident);
             %>
                 <h1>Editar tipo de lavagem</h1>
                 <br/>

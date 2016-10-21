@@ -14,25 +14,25 @@ import java.util.List;
  * @author Adriano
  */
 public class TipoLavagemController {
-    
-    public static List getListaTiposLavagem(){
-        return ManagerDao.getCurrentInstance().listAll("Select t from TipoLavagem t");
+
+    public static List getLista() {
+        return ManagerDao.getCurrentInstance().query("Select t from TipoLavagem t");
     }
-    
-    public static TipoLavagem getTipoLavagem(int id){
-        return (TipoLavagem)ManagerDao.getCurrentInstance().read("Select t from TipoLavagem t Where t.id = " + id, TipoLavagem.class).get(0);
+
+    public static TipoLavagem getById(int id) {
+        return (TipoLavagem) ManagerDao.getCurrentInstance().read("Select t from TipoLavagem t Where t.id = " + id, TipoLavagem.class).get(0);
     }
-    
-    public static void salvar(TipoLavagem tLavagem){
+
+    public static void salvar(TipoLavagem tLavagem) {
         ManagerDao.getCurrentInstance().insert(tLavagem);
     }
-    
-    public static TipoLavagem atualizar(TipoLavagem tLavagem){
+
+    public static TipoLavagem atualizar(TipoLavagem tLavagem) {
         return (TipoLavagem) ManagerDao.getCurrentInstance().update(tLavagem);
     }
-    
-    public static void remover(TipoLavagem tLavagem){
+
+    public static void remover(TipoLavagem tLavagem) {
         ManagerDao.getCurrentInstance().delete(tLavagem);
     }
-    
+
 }

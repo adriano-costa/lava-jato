@@ -5,12 +5,11 @@
  */
 package br.grupo7.lavajato.servlets;
 
-import br.grupo7.lavajato.controller.TipoLavagemController;
-import br.grupo7.lavajato.model.classes.TipoLavagem;
+import br.grupo7.lavajato.controller.ClienteController;
+import br.grupo7.lavajato.model.classes.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,8 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Adriano
  */
-
-public class TipoLavagemServlet extends HttpServlet {
+public class ClienteServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,27 +33,28 @@ public class TipoLavagemServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            TipoLavagem novoTipo = new TipoLavagem();
-            novoTipo.setNome(request.getParameter("nome"));
-            novoTipo.setDescricao(request.getParameter("descricao"));
-            novoTipo.setValor(Double.parseDouble(request.getParameter("valor")));
+            Cliente c = new Cliente();
+            c.setNome(request.getParameter("nome"));
+            c.setTelefone(request.getParameter("telefone"));
+            c.setLogin(request.getParameter("login"));
+            c.setSenha(request.getParameter("senha"));
             
             String opcao = request.getParameter("opcao");
    
             switch (opcao){
                 case "Cadastrar":
-                    TipoLavagemController.salvar(novoTipo);
+                    ClienteController.salvar(c);
                     break;
                 case "Salvar":
-                    novoTipo.setId(Integer.parseInt(request.getParameter("ident")));
-                    TipoLavagemController.atualizar(novoTipo);
+                    c.setId(Integer.parseInt(request.getParameter("ident")));
+                    ClienteController.atualizar(c);
                     break;
                 case "Remover":
-                    novoTipo.setId(Integer.parseInt(request.getParameter("ident")));
-                    TipoLavagemController.remover(novoTipo);
+                    c.setId(Integer.parseInt(request.getParameter("ident")));
+                    ClienteController.remover(c);
                     break;
             }
-            response.sendRedirect("Listar_tipo_lavagem.jsp");
+            response.sendRedirect("Listar_cliente.jsp");
         }
     }
 

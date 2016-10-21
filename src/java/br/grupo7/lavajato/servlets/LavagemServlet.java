@@ -5,12 +5,13 @@
  */
 package br.grupo7.lavajato.servlets;
 
-import br.grupo7.lavajato.controller.TipoLavagemController;
-import br.grupo7.lavajato.model.classes.TipoLavagem;
+import br.grupo7.lavajato.controller.ClienteController;
+import br.grupo7.lavajato.controller.LavagemController;
+import br.grupo7.lavajato.model.classes.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,8 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Adriano
  */
-
-public class TipoLavagemServlet extends HttpServlet {
+public class LavagemServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,27 +35,14 @@ public class TipoLavagemServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            TipoLavagem novoTipo = new TipoLavagem();
-            novoTipo.setNome(request.getParameter("nome"));
-            novoTipo.setDescricao(request.getParameter("descricao"));
-            novoTipo.setValor(Double.parseDouble(request.getParameter("valor")));
-            
             String opcao = request.getParameter("opcao");
-   
             switch (opcao){
-                case "Cadastrar":
-                    TipoLavagemController.salvar(novoTipo);
-                    break;
-                case "Salvar":
-                    novoTipo.setId(Integer.parseInt(request.getParameter("ident")));
-                    TipoLavagemController.atualizar(novoTipo);
-                    break;
-                case "Remover":
-                    novoTipo.setId(Integer.parseInt(request.getParameter("ident")));
-                    TipoLavagemController.remover(novoTipo);
+                case "Pesquisar":
+                    List l = ClienteController.buscaClientesNome(request.getParameter("pesquisa_nome"));
+                    request.setAttribute("lista_clientes", l);
+                    request.getRequestDispatcher("AgendarLavagem.jsp").forward(request, response);
                     break;
             }
-            response.sendRedirect("Listar_tipo_lavagem.jsp");
         }
     }
 

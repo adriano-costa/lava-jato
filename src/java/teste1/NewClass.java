@@ -18,19 +18,17 @@ import java.util.List;
 public class NewClass {
     
     public static void main(String[] args){
-        TipoLavagem t = new TipoLavagem();
-        t.setNome("Completa");
-        t.setDescricao("Lava tudo");
-        t.setValor(100.00);
         
-        ManagerDao.getCurrentInstance().insert(t);
-        
-        List<TipoLavagem> l = TipoLavagemController.getListaTiposLavagem();
-        System.out.println(l.get(0).getNome());
-//        Cliente c = new Cliente();
-//        c.setNome("dasdasdasds");
-//        c = (Cliente)ManagerDao.getCurrentInstance().update(c);
-//        System.out.println(c.getId());
+        Cliente c = new Cliente();
+        c.setNome("Cliente 1");
+        c.setSenha("1234");
+        c.setTelefone("12345678");
+        ManagerDao.getCurrentInstance().insert(c);
+        Cliente b = new Cliente();
+        b.setNome("Cliente 2");
+        b.setSenha("12345");
+        b.setTelefone("123456789");
+        ManagerDao.getCurrentInstance().insert(b);
     }
     
 }

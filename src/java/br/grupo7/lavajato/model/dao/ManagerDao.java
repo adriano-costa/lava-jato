@@ -77,7 +77,7 @@ public class ManagerDao {
         em.close();
     }
     
-    public List listAll(String query){
+    public List query(String query){
         
         EntityManager em = emf.createEntityManager();
         

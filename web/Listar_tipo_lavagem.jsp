@@ -21,7 +21,7 @@
             <h1>Tipos de lavagem</h1>
             <br/>
             <%
-            List<TipoLavagem> lista = TipoLavagemController.getListaTiposLavagem();
+            List<TipoLavagem> lista = TipoLavagemController.getLista();
             if (lista.size() == 0){
             %>
                     <h3>Não há tipos de lavagens cadastrados</h3>
